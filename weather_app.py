@@ -1,9 +1,10 @@
-import requests
+import requests 
 import sys
 import datetime
 
 # Replace with your OpenWeatherMap API key
-API_KEY = 'c3aa4c5cf97c4794d42bad82962eba9b'
+# Go to OpenWeatherMap and create an account in API key you can find the key or else you can create your own key
+API_KEY = 'Give your openWeather API key'
 
 def get_weather_data(city_or_zip, forecast_type='current'):
     if forecast_type == 'current':
@@ -54,7 +55,7 @@ def display_current_weather(data):
     print(f"Sunset: {sunset}")
 
 def display_forecast(data):
-    print("5-Day Forecast:")
+    print(f"5-Day Forecast of {city}:")
     for item in data['list']:
         dt = datetime.datetime.fromtimestamp(item['dt'])
         weather = item['weather'][0]['description']
@@ -81,3 +82,31 @@ def main():
 
 if __name__ == "__main__":
     main()
+
+
+# To run this code open the cmd prompt and save the python code file in the desktop then give %userprofile%/desktop + enter + dir, it will display all the files located 
+# in the desktop, now we can see the file that you have saved with the code.
+# 1) For current forecast type input 'python your_file_name.py [city or zip]
+# EX: python weather_app.py "new york"
+# output:
+# City: New York
+# Weather: Clear sky
+# Temperature: 85.4°F
+# Feels Like: 88.2°F
+# Humidity: 60%
+# Wind Speed: 5 mph
+# Pressure: 1010 hPa
+# Sunrise: 2024-09-15 06:32:12
+# Sunset: 2024-09-15 19:45:23
+# 2) For 5-day forecast type input 'python your_file_name.py [city or zip] forecast
+# Ex: python weather_app.py "new york" forecast
+#5-Day Forecast of New York:
+#2024-09-15 19:00:00 - Weather: Clear sky, Temperature: 70.74°F
+#2024-09-15 22:00:00 - Weather: Clear sky, Temperature: 70.2°F
+#2024-09-16 01:00:00 - Weather: Scattered clouds, Temperature: 68.68°F
+#2024-09-16 04:00:00 - Weather: Overcast clouds, Temperature: 66.42°F
+#2024-09-16 07:00:00 - Weather: Overcast clouds, Temperature: 66.52°F
+#.......
+#2024-09-20 13:00:00 - Weather: Overcast clouds, Temperature: 78.62°F
+#2024-09-20 16:00:00 - Weather: Overcast clouds, Temperature: 77.49°F
+
